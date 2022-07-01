@@ -6,6 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MikhailErnstovich/eCom-test-task.git"
+},
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
