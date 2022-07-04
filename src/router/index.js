@@ -24,7 +24,7 @@ const router = createRouter({
 router.beforeEach(async (to, from) => {
   if (
     // make sure the user is authenticated
-    !store.state.Auth.authKey &&
+    !localStorage.authKey &&
     // ❗️ Avoid an infinite redirect
     to.name !== 'authorization'
   ) {

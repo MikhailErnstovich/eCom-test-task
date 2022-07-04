@@ -30,6 +30,11 @@ export default {
   setup() {
     return { v$: useVuelidate() };
   },
+  watch: {
+    authKey(next, prev) {
+      localStorage.authKey = next;
+    }
+  },
   data() {
     return {
       form: {
@@ -57,7 +62,7 @@ export default {
       }
       const payload = { url: this.url, id: this.form.id };
       await this.login(payload);
-      if (this.authKey) {
+      if (localStorage.authKey) {
         this.$router.push('/analytics');
       }
     },
