@@ -23,17 +23,19 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, minLength, maxLength } from "@vuelidate/validators";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Authorization",
+  name: 'Authorization',
   setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
       form: {
-        id: "",
+        id: '',
       },
+      url: 'https://track-api.leadhit.io/client/test_auth',
     };
   },
   validations() {
@@ -48,13 +50,25 @@ export default {
     };
   },
   methods: {
-    submit() {
+    async submit() {
       this.v$.form.$touch();
       if (this.v$.form.$error) {
         return;
       }
-      alert("Form has been sent");
+      const payload = { url: this.url, id: this.form.id };
+      await this.login(payload);
+      if (this.authKey) {
+        this.$router.push('/analytics');
+      }
     },
+    ...mapActions({
+      login: 'Auth/login',
+    }),
+  },
+  computed: {
+    ...mapGetters({
+      authKey: 'Auth/getAuthKey',
+    }),
   },
 };
 </script>
