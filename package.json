@@ -11,6 +11,7 @@
     "url": "https://github.com/MikhailErnstovich/eCom-test-task.git"
   },
   "dependencies": {
+    "@amcharts/amcharts5": "^5.2.10",
     "@vuelidate/core": "^2.0.0-alpha.42",
     "@vuelidate/validators": "^2.0.0-alpha.30",
     "axios": "^0.27.2",
